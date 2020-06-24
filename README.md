@@ -83,7 +83,7 @@ for i in {1..5}
          echo $i.tpr >> tpr.dat  
  fi  
  done  
- [download](https://er1czz.github.io/gmx/dat.sh)  
+[download](https://er1czz.github.io/gmx/dat.sh)  
   </details>
   
 <details>  
