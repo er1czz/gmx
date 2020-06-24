@@ -45,7 +45,7 @@ do
   srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
   cd ..  
 done  
-[download](https://er1czz.github.io/gmx/qsub1.sh)
+[download](https://er1czz.github.io/gmx/qsub1.sh)  
 </details>
 
 <details>
@@ -57,7 +57,7 @@ for i in {1..5}
   sed -i 's/150K/200K/g' qsub$i.sh  
   sed -i 's/regular/premium/g' qsub$i.sh  
  done  
-  [download](https://er1czz.github.io/gmx/edit.sh)
+ [download](https://er1czz.github.io/gmx/edit.sh)  
   </details>
   
 <details>
