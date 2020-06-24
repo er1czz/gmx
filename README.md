@@ -16,8 +16,8 @@ export OMP_PROC_BIND=spread
   
 module load gromacs/2018.4.knl  
 cd 100  
-gmx_sp grompp -f pull.mdp -c conf.gro -p topol.top -o pull1.tpr  
-srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
+&nbsp gmx_sp grompp -f pull.mdp -c conf.gro -p topol.top -o pull1.tpr  
+&nbsp srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
 cd ..  
 [download](https://er1czz.github.io/gmx/qsub0.sh)  
 </details>
@@ -40,10 +40,10 @@ export OMP_PROC_BIND=spread
 module load gromacs/2018.4.knl  
 for i in {101..357..5}  
 do  
-  cd $i/  
-  gmx_sp grompp -f pull.mdp -c conf.gro -p topol.top -o pull1.tpr  
-  srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
-  cd ..  
+&nbsp cd $i/  
+&nbsp gmx_sp grompp -f pull.mdp -c conf.gro -p topol.top -o pull1.tpr  
+&nbsp srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
+&nbsp cd ..  
 done  
 [download](https://er1czz.github.io/gmx/qsub1.sh)  
 </details>
