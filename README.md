@@ -73,18 +73,18 @@ for i in {1..5}
  </details>
  
  <details>
-  <summary>generate the corresponding <b>tpr.dat</b> and <b>xvg.dat</b> files for WHAM based on the non-empty pullx.xvg: <b>dat.sh</b> </summary>
- #!/bin/bash  
- for i in {100..340}  
- do  
+<summary>generate the corresponding <b>tpr.dat</b> and <b>xvg.dat</b> files for WHAM based on the non-empty pullx.xvg: <b>dat.sh</b></summary>
+#!/bin/bash  
+for i in {100..340}  
+do  
          if [ -s $i.xvg ]  
          then   
          echo $i.xvg >> xvg.dat  
          echo $i.tpr >> tpr.dat  
- fi  
- done  
+fi  
+done  
 [download](https://er1czz.github.io/gmx/dat.sh)  
-  </details>
+</details>
   
 <details>  
   <summary> job script for WHAM on KNL at NERSC: <b>wham.sh</b> </summary>
@@ -104,4 +104,4 @@ export OMP_PROC_BIND=spread
 module load gromacs/2018.4.knl  
 gmx_sp wham -it tpr.dat -if xvg.dat -o -hist -unit kJ -nBootstrap 10 -bs-method b-hist -bsres    
 [download](https://er1czz.github.io/gmx/wham.sh)  
- </details>
+</details>
