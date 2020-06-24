@@ -1,6 +1,6 @@
 # scripts for gmx in \*NIX environment
 <details>
-<summary> - job script for 1 gmx simulation: **qsub0.sh**</summary>
+<summary> job script for a single gmx simulation: **qsub0.sh**</summary>
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH -C knl
