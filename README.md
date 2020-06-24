@@ -2,7 +2,6 @@
 <details>
   <summary> job script for a single gmx simulation: <b>qsub0.sh</b> </summary>
 
-<b>
 #!/bin/bash  
 #SBATCH -N 1  
 #SBATCH -C knl  
@@ -20,14 +19,13 @@ cd 100
 gmx_sp grompp -f pull.mdp -c conf.gro -p topol.top -o pull1.tpr  
 srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
 cd ..  
-</b>
+  
 [download](https://er1czz.github.io/gmx/qsub0.sh)  
 </details>
 
 <details>
   <summary> loop multiple jobs in one submission: <b>qsub1.sh</b> </summary> 
   
-<b>
 #!/bin/bash  
 #SBATCH -N 1  
 #SBATCH -C knl  
@@ -48,42 +46,40 @@ gmx_sp grompp -f pull.mdp -c conf.gro -p topol.top -o pull1.tpr
 srun -n 1 -c 64  mdrun_mpi_sp -s pull1.tpr -o pull1.trr -c pull1.gro -g md1.log -pf pullf1.xvg -px pullx1.xvg  
 cd ..  
 done  
-</b>
+  
 [download](https://er1czz.github.io/gmx/qsub1.sh)  
 </details>
 
 <details>
   <summary> edit qsub$i.sh file in one batch: <b>edit.sh</b></summary>
   
-<b>
+
 #!/bin/bash  
 for i in {1..5}  
  do  
   sed -i 's/150K/200K/g' qsub$i.sh  
   sed -i 's/regular/premium/g' qsub$i.sh  
  done  
- </b>
+   
  [download](https://er1czz.github.io/gmx/edit.sh)  
   </details>
   
 <details>
   <summary>copy output e.g. <b>pull1.tpr</b> and <b>pullf1.xvg</b> to current directory and rename for WHAM: <b>cpdata.sh</b> </summary>
-  
- <b>
+    
  #!/bin/bash  
  for i in {0..357}  
  do  
   cp ../$i/pullf1.xvg $i.xvg  
   cp ../$i/pull1.tpr $i.tpr  
  done  
- </b>
+   
  [download](https://er1czz.github.io/gmx/cpdata.sh)  
  </details>
  
  <details>
 <summary>generate the corresponding <b>tpr.dat</b> and <b>xvg.dat</b> files for WHAM based on the non-empty pullx.xvg: <b>dat.sh</b></summary>
   
-<b>
 #!/bin/bash  
 for i in {100..340}  
 do  
@@ -93,14 +89,13 @@ do
          echo $i.tpr >> tpr.dat  
 fi  
 done  
-</b>  
+  
 [download](https://er1czz.github.io/gmx/dat.sh)  
 </details>
   
 <details>  
   <summary> job script for WHAM on KNL at NERSC: <b>wham.sh</b> </summary>
   
-<b>
 #!/bin/bash  
 #SBATCH -N 1  
 #SBATCH -C knl  
@@ -116,6 +111,6 @@ export OMP_PROC_BIND=spread
 
 module load gromacs/2018.4.knl  
 gmx_sp wham -it tpr.dat -if xvg.dat -o -hist -unit kJ -nBootstrap 10 -bs-method b-hist -bsres    
-</b>
+  
 [download](https://er1czz.github.io/gmx/wham.sh)  
 </details>
