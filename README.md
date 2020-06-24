@@ -74,6 +74,7 @@ for i in {1..5}
  
  <details>
 <summary>generate the corresponding <b>tpr.dat</b> and <b>xvg.dat</b> files for WHAM based on the non-empty pullx.xvg: <b>dat.sh</b></summary>
+  
 #!/bin/bash  
 for i in {100..340}  
 do  
@@ -88,6 +89,7 @@ done
   
 <details>  
   <summary> job script for WHAM on KNL at NERSC: <b>wham.sh</b> </summary>
+  
 #!/bin/bash  
 #SBATCH -N 1  
 #SBATCH -C knl  
