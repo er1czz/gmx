@@ -46,7 +46,62 @@ do
   cd ..  
 done  
 [download](https://er1czz.github.io/gmx/qsub1.sh)
-- edit qsub$i.sh file in one batch: **edit.sh**[download](https://er1czz.github.io/gmx/edit.sh)
-- copy output e.g. **pull1.tpr** and **pullf1.xvg** to current directory and rename for WHAM: **cpdata.sh** [download](https://er1czz.github.io/gmx/cpdata.sh)
-- generate the corresponding **tpr.dat** and **xvg.dat** files for WHAM based on the non-empty pullx.xvg: **dat.sh** [download](https://er1czz.github.io/gmx/dat.sh)
-- job script for WHAM on KNL at NERSC: **wham.sh** [download](https://er1czz.github.io/gmx/wham.sh)
+</details>
+
+<details>
+  <summary> edit qsub$i.sh file in one batch: <b>edit.sh</b></summary>
+  
+#!/bin/bash  
+for i in {1..5}  
+ do  
+  sed -i 's/150K/200K/g' qsub$i.sh  
+  sed -i 's/regular/premium/g' qsub$i.sh  
+ done  
+  [download](https://er1czz.github.io/gmx/edit.sh)
+  </details>
+  
+<details>
+  <summary>copy output e.g. <b>pull1.tpr</b> and <b>pullf1.xvg</b> to current directory and rename for WHAM: <b>cpdata.sh</b> </summary>
+  
+ #!/bin/bash  
+ for i in {0..357}  
+ do  
+  cp ../$i/pullf1.xvg $i.xvg  
+  cp ../$i/pull1.tpr $i.tpr  
+ done  
+ [download](https://er1czz.github.io/gmx/cpdata.sh)  
+ </details>
+ 
+ <details>
+  <summary>generate the corresponding <b>tpr.dat</b> and <b>xvg.dat</b> files for WHAM based on the non-empty pullx.xvg: <b>dat.sh</b> </summary>
+ #!/bin/bash  
+ for i in {100..340}  
+ do  
+         if [ -s $i.xvg ]  
+         then   
+         echo $i.xvg >> xvg.dat  
+         echo $i.tpr >> tpr.dat  
+ fi  
+ done  
+ [download](https://er1czz.github.io/gmx/dat.sh)  
+  </details>
+  
+<details>  
+  <summary> job script for WHAM on KNL at NERSC: <b>wham.sh</b> </summary>
+#!/bin/bash  
+#SBATCH -N 1  
+#SBATCH -C knl  
+#SBATCH -S 4  
+#SBATCH -q debug  
+#SBATCH -t 00:10:00  
+#SBATCH -J wham  
+
+#OpenMP settings:  
+export OMP_NUM_THREADS=64  
+export OMP_PLACES=threads  
+export OMP_PROC_BIND=spread  
+
+module load gromacs/2018.4.knl  
+gmx_sp wham -it tpr.dat -if xvg.dat -o -hist -unit kJ -nBootstrap 10 -bs-method b-hist -bsres    
+[download](https://er1czz.github.io/gmx/wham.sh)  
+ </details>
