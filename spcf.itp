@@ -1,0 +1,18 @@
+[ moleculetype ]
+; molname       nrexcl
+SOL             2
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass
+     1         OW      1    SOL     OW      1     -0.820       15.99940
+     2         HW      1    SOL    HW1      1      0.410       1.00800
+     3         HW      1    SOL    HW2      1      0.410       1.00800
+
+[ bonds ]
+; i     j       funct   length  force.c.
+1       2       1       0.09572 502080.0 ; OW HW
+1       3       1       0.09572 502080.0 ; OW HW
+
+[ angles ]
+; i     j       k       funct   angle   force.c.
+2       1       3       1       109.50  627.600 ; HW-OW-HW
