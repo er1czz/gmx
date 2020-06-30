@@ -1,4 +1,4 @@
-# scripts for gmx in \*NIX environment
+# bash scripts for GROMACS
 <details>
   <summary> job script for a single gmx simulation: <b>qsub0.sh</b> </summary>
 
