@@ -115,7 +115,7 @@ gmx_sp wham -it tpr.dat -if xvg.dat -o -hist -unit kJ -nBootstrap 10 -bs-method 
 [download](https://er1czz.github.io/gmx/wham.sh)  
 </details>
 
-Tips:
+### Tips:  
 To translate the trajactory coordinates, one easy way is to use trjconv.  
 <b>-trans <vector> </b>   
 <b>-pbc mol</b> will reset the periodic boundary conditions (pbc) to eliminiate the possible artifact by pbc.  
