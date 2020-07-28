@@ -118,6 +118,6 @@ gmx_sp wham -it tpr.dat -if xvg.dat -o -hist -unit kJ -nBootstrap 10 -bs-method 
 ### Tips:  
 To translate the trajactory coordinates, one easy way is to use trjconv.  
 <b>-trans <vector> </b>   
-<b>-pbc mol</b> will reset the periodic boundary conditions (pbc) to eliminiate the possible artifact by pbc.  
+<b>-pbc atom</b> will puts all the atoms in the box.   
+e.g. gmx_sp trjconv -f pull1.trr -s pull1.tpr -o traj1.gro -pbc atom -trans 0 0 1    
 <em>All coordinates will be translated by trans. This can advantageously be combined with -pbc mol -ur compact.</em>  
-e.g. gmx_sp trjconv -f pull1.trr -s pull1.tpr -o traj1.gro -pbc mol -trans 0 0 1  
